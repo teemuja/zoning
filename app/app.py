@@ -52,6 +52,8 @@ plot['vuosikymmen'] = plot['vuosikymmen'].astype(str)
 
 # exclude outliers for scatt plot
 q =0.99
+plot = plot.loc[plot['rekisteriala'] != 0]
+plot = plot.loc[plot['rakennusoikeus'] != 0]
 plot = plot.loc[plot['rekisteriala'] < plot['rekisteriala'].quantile(q)]
 scatt = plot.loc[plot['rakennusoikeus'] < plot['rakennusoikeus'].quantile(q)]
 range_y = scatt['rakennusoikeus'].quantile(0.99) + 2000
